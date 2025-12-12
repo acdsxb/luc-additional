@@ -1,0 +1,21 @@
+CREATE TABLE `storage_file` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `bind_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '绑定数据id',
+  `bind_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '绑定数据类型',
+  `file_id` char(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '文件id',
+  `filename` varchar(255) DEFAULT NULL COMMENT '文件名，下载及展示',
+  `file_path` varchar(1024) DEFAULT NULL COMMENT '文件存储路径',
+  `file_size` varchar(30) DEFAULT NULL COMMENT '文件大小',
+  `preview_url` varchar(1024) DEFAULT NULL COMMENT '预览地址',
+  `download_url` varchar(2048) DEFAULT NULL COMMENT '下载地址',
+  `storage_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '存储类型，server：服务器，s3：对象存储',
+  `operator_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作人id',
+  `operator_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作人名称',
+  `extra_info` text COMMENT '扩展信息',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `storage_file_bind_id_IDX` (`bind_id`) USING BTREE,
+  KEY `storage_file_file_id_IDX` (`file_id`) USING BTREE,
+  KEY `storage_file_operator_id_IDX` (`operator_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='存储文件信息';
