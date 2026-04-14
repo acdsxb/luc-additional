@@ -11,6 +11,7 @@
     <modules>
         <module>additional-common</module>
         <module>additional-storage</module>
+        <module>additional-sensitive-jackson</module>
     </modules>
 
     <properties>
